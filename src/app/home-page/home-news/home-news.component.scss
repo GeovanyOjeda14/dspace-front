@@ -1,0 +1,34 @@
+// :host {
+//     display: block;
+// }
+
+.display-3 {
+    word-break: break-word;
+}
+
+// .jumbotron {
+//   background-color: var(--ds-home-news-background-color);
+// }
+
+// a {
+//   color: var(--ds-home-news-link-color);
+
+//   @include hover {
+//     color: var(--ds-home-news-link-hover-color);
+//   }
+// }
+
+h1 {
+  color: var(--my-color-h1);
+  font-size: 2rem;
+  font-weight: 900;
+  text-align: center;
+  padding: 3rem 0;
+}
+
+h1 span.small {
+  font-weight: 900;
+  display: block;
+  font-size: .72em;
+  color: var(--my-color-small);
+}

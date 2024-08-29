@@ -1,0 +1,38 @@
+<nav [ngClass]="{'open': !(menuCollapsed | async)}"
+     [@slideMobileNav]="!(windowService.isXsOrSm() | async) ? 'default' : ((menuCollapsed | async) ? 'collapsed' : 'expanded')"
+     class="navbar navbar-light navbar-expand-md px-md-0 pt-md-0 pt-3 navbar-container" role="navigation"
+     [attr.aria-label]="'nav.main.description' | translate" id="main-navbar">
+  <!-- TODO remove navbar-container class when https://github.com/twbs/bootstrap/issues/24726 is fixed -->
+
+  <div class="navbar-inner-container w-100 justify-content-between container">
+    <a class="navbar-brand my-2 ng-tns-c188-1" routerLink="/home">
+      <img src="https://www.metabiblioteca.com/wp-content/uploads/2021/08/logo-metabiblioteca-e1689737496593.png" [attr.alt]="'menu.header.image.logo' | translate"/>
+      <!-- <div class="text-container">
+        <h1>Repository GO</h1>
+      </div> -->
+    </a>
+
+    <div class="reset-padding-md ng-tns-c188-1">
+      <div [class.container]="!(isMobile$ | async)">
+        <div class="w-100">
+          <div id="collapsingNav">
+            <ng-container *ngIf="(isMobile$ | async) && (isAuthenticated$ | async)">
+              <ds-themed-user-menu [inExpandableNavbar]="true"></ds-themed-user-menu>
+            </ng-container>
+            <div class="navbar-nav align-items-md-center mr-auto shadow-none gapx-3">
+              <ng-container *ngFor="let section of (sections | async)">
+                <ng-container
+                  *ngComponentOutlet="(sectionMap$ | async).get(section.id)?.component; injector: (sectionMap$ | async).get(section.id)?.injector;"></ng-container>
+              </ng-container>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+
+
+</nav>
